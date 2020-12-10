@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SurvayDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Eposta" Type="nvarchar" MaxLength="50" />
+    <Property Name="Sifre" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ad" Type="nvarchar" MaxLength="20" />
+    <Property Name="Soyad" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuestionID" Type="int" />
+    <Property Name="ParticipantID" Type="int" />
+  </EntityType>
+  <EntityType Name="Bolge">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BolgeAd" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ExamInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SinavAdi" Type="nvarchar" MaxLength="20" />
+    <Property Name="MaxSure" Type="time" Precision="7" />
+    <Property Name="MaxSoruSayisi" Type="int" />
+  </EntityType>
+  <EntityType Name="Participant">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="BolgeID" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="QuestionType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuestionTypeName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="QuestionTypeFiveChoseExam">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuestionText" Type="nvarchar" MaxLength="200" />
+    <Property Name="Option1" Type="nvarchar" MaxLength="20" />
+    <Property Name="Option2" Type="nvarchar" MaxLength="20" />
+    <Property Name="Option3" Type="nvarchar" MaxLength="20" />
+    <Property Name="Option4" Type="nvarchar" MaxLength="20" />
+    <Property Name="Option5" Type="nvarchar" MaxLength="20" />
+    <Property Name="CorrectAnswer" Type="nvarchar" MaxLength="20" />
+    <Property Name="SurveyID" Type="int" />
+    <Property Name="BolgeID" Type="int" />
+  </EntityType>
+  <EntityType Name="QuestionTypeFiveChoseSurvey">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuestionText" Type="nvarchar" MaxLength="200" />
+    <Property Name="Answer" Type="int" />
+    <Property Name="SurveyID" Type="int" />
+    <Property Name="QuestionTypeID" Type="int" />
+  </EntityType>
+  <EntityType Name="QuestionTypeImage">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuestionText" Type="nvarchar" MaxLength="200" />
+    <Property Name="Image" Type="image" />
+    <Property Name="SurveyID" Type="int" />
+    <Property Name="QuestionTypeID" Type="int" />
+  </EntityType>
+  <EntityType Name="QuestionTypeThree">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuestionText" Type="nvarchar" MaxLength="200" />
+    <Property Name="Answer" Type="int" />
+    <Property Name="SurveyID" Type="int" />
+    <Property Name="QuestionTypeID" Type="int" />
+  </EntityType>
+  <EntityType Name="QuestionTypeYesNo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuestionText" Type="nvarchar" MaxLength="200" />
+    <Property Name="Answer" Type="bit" />
+    <Property Name="SurveyID" Type="int" />
+    <Property Name="QuestionTypeID" Type="int" />
+  </EntityType>
+  <EntityType Name="SurveyInfo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AnketAdi" Type="nvarchar" MaxLength="25" />
+    <Property Name="MaxSure" Type="time" Precision="7" />
+    <Property Name="MaxSoruSayisi" Type="int" />
+    <Property Name="BolgeID" Type="int" />
+  </EntityType>
+  <EntityContainer Name="SurvayDatabaseModelStoreContainer">
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Answer" EntityType="Self.Answer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bolge" EntityType="Self.Bolge" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExamInfo" EntityType="Self.ExamInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Participant" EntityType="Self.Participant" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QuestionType" EntityType="Self.QuestionType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QuestionTypeFiveChoseExam" EntityType="Self.QuestionTypeFiveChoseExam" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QuestionTypeFiveChoseSurvey" EntityType="Self.QuestionTypeFiveChoseSurvey" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QuestionTypeImage" EntityType="Self.QuestionTypeImage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QuestionTypeThree" EntityType="Self.QuestionTypeThree" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QuestionTypeYesNo" EntityType="Self.QuestionTypeYesNo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SurveyInfo" EntityType="Self.SurveyInfo" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

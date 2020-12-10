@@ -1,0 +1,423 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SurvayDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Eposta" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="20" />
+          <Property Name="Soyad" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Answer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuestionID" Type="int" />
+          <Property Name="ParticipantID" Type="int" />
+        </EntityType>
+        <EntityType Name="Bolge">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BolgeAd" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ExamInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SinavAdi" Type="nvarchar" MaxLength="20" />
+          <Property Name="MaxSure" Type="time" Precision="7" />
+          <Property Name="MaxSoruSayisi" Type="int" />
+        </EntityType>
+        <EntityType Name="Participant">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="BolgeID" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="QuestionType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuestionTypeName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="QuestionTypeFiveChoseExam">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuestionText" Type="nvarchar" MaxLength="200" />
+          <Property Name="Option1" Type="nvarchar" MaxLength="20" />
+          <Property Name="Option2" Type="nvarchar" MaxLength="20" />
+          <Property Name="Option3" Type="nvarchar" MaxLength="20" />
+          <Property Name="Option4" Type="nvarchar" MaxLength="20" />
+          <Property Name="Option5" Type="nvarchar" MaxLength="20" />
+          <Property Name="CorrectAnswer" Type="nvarchar" MaxLength="20" />
+          <Property Name="SurveyID" Type="int" />
+          <Property Name="BolgeID" Type="int" />
+        </EntityType>
+        <EntityType Name="QuestionTypeFiveChoseSurvey">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuestionText" Type="nvarchar" MaxLength="200" />
+          <Property Name="Answer" Type="int" />
+          <Property Name="SurveyID" Type="int" />
+          <Property Name="QuestionTypeID" Type="int" />
+        </EntityType>
+        <EntityType Name="QuestionTypeImage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuestionText" Type="nvarchar" MaxLength="200" />
+          <Property Name="Image" Type="image" />
+          <Property Name="SurveyID" Type="int" />
+          <Property Name="QuestionTypeID" Type="int" />
+        </EntityType>
+        <EntityType Name="QuestionTypeThree">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuestionText" Type="nvarchar" MaxLength="200" />
+          <Property Name="Answer" Type="int" />
+          <Property Name="SurveyID" Type="int" />
+          <Property Name="QuestionTypeID" Type="int" />
+        </EntityType>
+        <EntityType Name="QuestionTypeYesNo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuestionText" Type="nvarchar" MaxLength="200" />
+          <Property Name="Answer" Type="bit" />
+          <Property Name="SurveyID" Type="int" />
+          <Property Name="QuestionTypeID" Type="int" />
+        </EntityType>
+        <EntityType Name="SurveyInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AnketAdi" Type="nvarchar" MaxLength="25" />
+          <Property Name="MaxSure" Type="time" Precision="7" />
+          <Property Name="MaxSoruSayisi" Type="int" />
+          <Property Name="BolgeID" Type="int" />
+        </EntityType>
+        <EntityContainer Name="SurvayDatabaseModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Answer" EntityType="Self.Answer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bolge" EntityType="Self.Bolge" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExamInfo" EntityType="Self.ExamInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Participant" EntityType="Self.Participant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuestionType" EntityType="Self.QuestionType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuestionTypeFiveChoseExam" EntityType="Self.QuestionTypeFiveChoseExam" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuestionTypeFiveChoseSurvey" EntityType="Self.QuestionTypeFiveChoseSurvey" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuestionTypeImage" EntityType="Self.QuestionTypeImage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuestionTypeThree" EntityType="Self.QuestionTypeThree" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuestionTypeYesNo" EntityType="Self.QuestionTypeYesNo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SurveyInfo" EntityType="Self.SurveyInfo" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SurvayDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Eposta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ad" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Soyad" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Answer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuestionID" Type="Int32" />
+          <Property Name="ParticipantID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Bolge">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BolgeAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ExamInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SinavAdi" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MaxSure" Type="Time" Precision="7" />
+          <Property Name="MaxSoruSayisi" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Participant">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BolgeID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="QuestionType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuestionTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="QuestionTypeFiveChoseExam">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuestionText" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Option1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Option2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Option3" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Option4" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Option5" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CorrectAnswer" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SurveyID" Type="Int32" />
+          <Property Name="BolgeID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="QuestionTypeFiveChoseSurvey">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuestionText" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Answer" Type="Int32" />
+          <Property Name="SurveyID" Type="Int32" />
+          <Property Name="QuestionTypeID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="QuestionTypeImage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuestionText" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="SurveyID" Type="Int32" />
+          <Property Name="QuestionTypeID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="QuestionTypeThree">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuestionText" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Answer" Type="Int32" />
+          <Property Name="SurveyID" Type="Int32" />
+          <Property Name="QuestionTypeID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="QuestionTypeYesNo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuestionText" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Answer" Type="Boolean" />
+          <Property Name="SurveyID" Type="Int32" />
+          <Property Name="QuestionTypeID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="SurveyInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AnketAdi" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="MaxSure" Type="Time" Precision="7" />
+          <Property Name="MaxSoruSayisi" Type="Int32" />
+          <Property Name="BolgeID" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="SurvayDatabaseEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admin" EntityType="Self.Admin" />
+          <EntitySet Name="Answer" EntityType="Self.Answer" />
+          <EntitySet Name="Bolge" EntityType="Self.Bolge" />
+          <EntitySet Name="ExamInfo" EntityType="Self.ExamInfo" />
+          <EntitySet Name="Participant" EntityType="Self.Participant" />
+          <EntitySet Name="QuestionType" EntityType="Self.QuestionType" />
+          <EntitySet Name="QuestionTypeFiveChoseExam" EntityType="Self.QuestionTypeFiveChoseExam" />
+          <EntitySet Name="QuestionTypeFiveChoseSurvey" EntityType="Self.QuestionTypeFiveChoseSurvey" />
+          <EntitySet Name="QuestionTypeImage" EntityType="Self.QuestionTypeImage" />
+          <EntitySet Name="QuestionTypeThree" EntityType="Self.QuestionTypeThree" />
+          <EntitySet Name="QuestionTypeYesNo" EntityType="Self.QuestionTypeYesNo" />
+          <EntitySet Name="SurveyInfo" EntityType="Self.SurveyInfo" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SurvayDatabaseModelStoreContainer" CdmEntityContainer="SurvayDatabaseEntities2">
+          <EntitySetMapping Name="Admin">
+            <EntityTypeMapping TypeName="SurvayDatabaseModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Eposta" ColumnName="Eposta" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Answer">
+            <EntityTypeMapping TypeName="SurvayDatabaseModel.Answer">
+              <MappingFragment StoreEntitySet="Answer">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+                <ScalarProperty Name="ParticipantID" ColumnName="ParticipantID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bolge">
+            <EntityTypeMapping TypeName="SurvayDatabaseModel.Bolge">
+              <MappingFragment StoreEntitySet="Bolge">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BolgeAd" ColumnName="BolgeAd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExamInfo">
+            <EntityTypeMapping TypeName="SurvayDatabaseModel.ExamInfo">
+              <MappingFragment StoreEntitySet="ExamInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SinavAdi" ColumnName="SinavAdi" />
+                <ScalarProperty Name="MaxSure" ColumnName="MaxSure" />
+                <ScalarProperty Name="MaxSoruSayisi" ColumnName="MaxSoruSayisi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Participant">
+            <EntityTypeMapping TypeName="SurvayDatabaseModel.Participant">
+              <MappingFragment StoreEntitySet="Participant">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="BolgeID" ColumnName="BolgeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuestionType">
+            <EntityTypeMapping TypeName="SurvayDatabaseModel.QuestionType">
+              <MappingFragment StoreEntitySet="QuestionType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="QuestionTypeName" ColumnName="QuestionTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuestionTypeFiveChoseExam">
+            <EntityTypeMapping TypeName="SurvayDatabaseModel.QuestionTypeFiveChoseExam">
+              <MappingFragment StoreEntitySet="QuestionTypeFiveChoseExam">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="QuestionText" ColumnName="QuestionText" />
+                <ScalarProperty Name="Option1" ColumnName="Option1" />
+                <ScalarProperty Name="Option2" ColumnName="Option2" />
+                <ScalarProperty Name="Option3" ColumnName="Option3" />
+                <ScalarProperty Name="Option4" ColumnName="Option4" />
+                <ScalarProperty Name="Option5" ColumnName="Option5" />
+                <ScalarProperty Name="CorrectAnswer" ColumnName="CorrectAnswer" />
+                <ScalarProperty Name="SurveyID" ColumnName="SurveyID" />
+                <ScalarProperty Name="BolgeID" ColumnName="BolgeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuestionTypeFiveChoseSurvey">
+            <EntityTypeMapping TypeName="SurvayDatabaseModel.QuestionTypeFiveChoseSurvey">
+              <MappingFragment StoreEntitySet="QuestionTypeFiveChoseSurvey">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="QuestionText" ColumnName="QuestionText" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="SurveyID" ColumnName="SurveyID" />
+                <ScalarProperty Name="QuestionTypeID" ColumnName="QuestionTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuestionTypeImage">
+            <EntityTypeMapping TypeName="SurvayDatabaseModel.QuestionTypeImage">
+              <MappingFragment StoreEntitySet="QuestionTypeImage">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="QuestionText" ColumnName="QuestionText" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="SurveyID" ColumnName="SurveyID" />
+                <ScalarProperty Name="QuestionTypeID" ColumnName="QuestionTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuestionTypeThree">
+            <EntityTypeMapping TypeName="SurvayDatabaseModel.QuestionTypeThree">
+              <MappingFragment StoreEntitySet="QuestionTypeThree">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="QuestionText" ColumnName="QuestionText" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="SurveyID" ColumnName="SurveyID" />
+                <ScalarProperty Name="QuestionTypeID" ColumnName="QuestionTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuestionTypeYesNo">
+            <EntityTypeMapping TypeName="SurvayDatabaseModel.QuestionTypeYesNo">
+              <MappingFragment StoreEntitySet="QuestionTypeYesNo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="QuestionText" ColumnName="QuestionText" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="SurveyID" ColumnName="SurveyID" />
+                <ScalarProperty Name="QuestionTypeID" ColumnName="QuestionTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SurveyInfo">
+            <EntityTypeMapping TypeName="SurvayDatabaseModel.SurveyInfo">
+              <MappingFragment StoreEntitySet="SurveyInfo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AnketAdi" ColumnName="AnketAdi" />
+                <ScalarProperty Name="MaxSure" ColumnName="MaxSure" />
+                <ScalarProperty Name="MaxSoruSayisi" ColumnName="MaxSoruSayisi" />
+                <ScalarProperty Name="BolgeID" ColumnName="BolgeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

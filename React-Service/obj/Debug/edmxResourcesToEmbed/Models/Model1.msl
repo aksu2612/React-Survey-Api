@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SurvayDatabaseModelStoreContainer" CdmEntityContainer="SurvayDatabaseEntities2">
+    <EntitySetMapping Name="Admin">
+      <EntityTypeMapping TypeName="SurvayDatabaseModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Eposta" ColumnName="Eposta" />
+          <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Answer">
+      <EntityTypeMapping TypeName="SurvayDatabaseModel.Answer">
+        <MappingFragment StoreEntitySet="Answer">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+          <ScalarProperty Name="ParticipantID" ColumnName="ParticipantID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bolge">
+      <EntityTypeMapping TypeName="SurvayDatabaseModel.Bolge">
+        <MappingFragment StoreEntitySet="Bolge">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BolgeAd" ColumnName="BolgeAd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExamInfo">
+      <EntityTypeMapping TypeName="SurvayDatabaseModel.ExamInfo">
+        <MappingFragment StoreEntitySet="ExamInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SinavAdi" ColumnName="SinavAdi" />
+          <ScalarProperty Name="MaxSure" ColumnName="MaxSure" />
+          <ScalarProperty Name="MaxSoruSayisi" ColumnName="MaxSoruSayisi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Participant">
+      <EntityTypeMapping TypeName="SurvayDatabaseModel.Participant">
+        <MappingFragment StoreEntitySet="Participant">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="BolgeID" ColumnName="BolgeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuestionType">
+      <EntityTypeMapping TypeName="SurvayDatabaseModel.QuestionType">
+        <MappingFragment StoreEntitySet="QuestionType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="QuestionTypeName" ColumnName="QuestionTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuestionTypeFiveChoseExam">
+      <EntityTypeMapping TypeName="SurvayDatabaseModel.QuestionTypeFiveChoseExam">
+        <MappingFragment StoreEntitySet="QuestionTypeFiveChoseExam">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="QuestionText" ColumnName="QuestionText" />
+          <ScalarProperty Name="Option1" ColumnName="Option1" />
+          <ScalarProperty Name="Option2" ColumnName="Option2" />
+          <ScalarProperty Name="Option3" ColumnName="Option3" />
+          <ScalarProperty Name="Option4" ColumnName="Option4" />
+          <ScalarProperty Name="Option5" ColumnName="Option5" />
+          <ScalarProperty Name="CorrectAnswer" ColumnName="CorrectAnswer" />
+          <ScalarProperty Name="SurveyID" ColumnName="SurveyID" />
+          <ScalarProperty Name="BolgeID" ColumnName="BolgeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuestionTypeFiveChoseSurvey">
+      <EntityTypeMapping TypeName="SurvayDatabaseModel.QuestionTypeFiveChoseSurvey">
+        <MappingFragment StoreEntitySet="QuestionTypeFiveChoseSurvey">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="QuestionText" ColumnName="QuestionText" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="SurveyID" ColumnName="SurveyID" />
+          <ScalarProperty Name="QuestionTypeID" ColumnName="QuestionTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuestionTypeImage">
+      <EntityTypeMapping TypeName="SurvayDatabaseModel.QuestionTypeImage">
+        <MappingFragment StoreEntitySet="QuestionTypeImage">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="QuestionText" ColumnName="QuestionText" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="SurveyID" ColumnName="SurveyID" />
+          <ScalarProperty Name="QuestionTypeID" ColumnName="QuestionTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuestionTypeThree">
+      <EntityTypeMapping TypeName="SurvayDatabaseModel.QuestionTypeThree">
+        <MappingFragment StoreEntitySet="QuestionTypeThree">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="QuestionText" ColumnName="QuestionText" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="SurveyID" ColumnName="SurveyID" />
+          <ScalarProperty Name="QuestionTypeID" ColumnName="QuestionTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuestionTypeYesNo">
+      <EntityTypeMapping TypeName="SurvayDatabaseModel.QuestionTypeYesNo">
+        <MappingFragment StoreEntitySet="QuestionTypeYesNo">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="QuestionText" ColumnName="QuestionText" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="SurveyID" ColumnName="SurveyID" />
+          <ScalarProperty Name="QuestionTypeID" ColumnName="QuestionTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SurveyInfo">
+      <EntityTypeMapping TypeName="SurvayDatabaseModel.SurveyInfo">
+        <MappingFragment StoreEntitySet="SurveyInfo">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AnketAdi" ColumnName="AnketAdi" />
+          <ScalarProperty Name="MaxSure" ColumnName="MaxSure" />
+          <ScalarProperty Name="MaxSoruSayisi" ColumnName="MaxSoruSayisi" />
+          <ScalarProperty Name="BolgeID" ColumnName="BolgeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SurvayDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Eposta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Ad" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Soyad" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QuestionID" Type="Int32" />
+    <Property Name="ParticipantID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Bolge">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BolgeAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ExamInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SinavAdi" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="MaxSure" Type="Time" Precision="7" />
+    <Property Name="MaxSoruSayisi" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Participant">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BolgeID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="QuestionType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QuestionTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="QuestionTypeFiveChoseExam">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QuestionText" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Option1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Option2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Option3" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Option4" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Option5" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="CorrectAnswer" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="SurveyID" Type="Int32" />
+    <Property Name="BolgeID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="QuestionTypeFiveChoseSurvey">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QuestionText" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Answer" Type="Int32" />
+    <Property Name="SurveyID" Type="Int32" />
+    <Property Name="QuestionTypeID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="QuestionTypeImage">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QuestionText" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="SurveyID" Type="Int32" />
+    <Property Name="QuestionTypeID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="QuestionTypeThree">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QuestionText" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Answer" Type="Int32" />
+    <Property Name="SurveyID" Type="Int32" />
+    <Property Name="QuestionTypeID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="QuestionTypeYesNo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QuestionText" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Answer" Type="Boolean" />
+    <Property Name="SurveyID" Type="Int32" />
+    <Property Name="QuestionTypeID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="SurveyInfo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AnketAdi" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="MaxSure" Type="Time" Precision="7" />
+    <Property Name="MaxSoruSayisi" Type="Int32" />
+    <Property Name="BolgeID" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="SurvayDatabaseEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Admin" EntityType="Self.Admin" />
+    <EntitySet Name="Answer" EntityType="Self.Answer" />
+    <EntitySet Name="Bolge" EntityType="Self.Bolge" />
+    <EntitySet Name="ExamInfo" EntityType="Self.ExamInfo" />
+    <EntitySet Name="Participant" EntityType="Self.Participant" />
+    <EntitySet Name="QuestionType" EntityType="Self.QuestionType" />
+    <EntitySet Name="QuestionTypeFiveChoseExam" EntityType="Self.QuestionTypeFiveChoseExam" />
+    <EntitySet Name="QuestionTypeFiveChoseSurvey" EntityType="Self.QuestionTypeFiveChoseSurvey" />
+    <EntitySet Name="QuestionTypeImage" EntityType="Self.QuestionTypeImage" />
+    <EntitySet Name="QuestionTypeThree" EntityType="Self.QuestionTypeThree" />
+    <EntitySet Name="QuestionTypeYesNo" EntityType="Self.QuestionTypeYesNo" />
+    <EntitySet Name="SurveyInfo" EntityType="Self.SurveyInfo" />
+  </EntityContainer>
+</Schema>
